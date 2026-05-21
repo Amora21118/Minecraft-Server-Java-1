@@ -1,0 +1,37 @@
+{
+  "name": "Android & Minecraft Development",
+  "image": "mcr.microsoft.com/devcontainers/java:17-gradle",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/git:latest": {},
+    "ghcr.io/devcontainers/features/github-cli:latest": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.extension-pack-for-java",
+        "redhat.java",
+        "ms-vscode.gradle",
+        "usernamehw.errorlens",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "java.server.launchMode": "Standard",
+        "java.compile.nullAnalysis.mode": "automatic",
+        "[java]": {
+          "editor.formatOnSave": true,
+          "editor.defaultFormatter": "redhat.java"
+        }
+      }
+    }
+  },
+  "postCreateCommand": "java -version && gradle --version",
+  "remoteUser": "vscode",
+  "forwardPorts": [25565],
+  "portsAttributes": {
+    "25565": {
+      "label": "Minecraft Server",
+      "onAutoForward": "notify"
+    }
+  }
+}
